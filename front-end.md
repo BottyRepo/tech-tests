@@ -10,7 +10,7 @@
 function heavyCalc1() {
   return new Promise((resolve) => {
     let result = 0;
-    const end = Date.now() + 10_000; // блокує поток ~10 сек
+    const end = Date.now() + 10_000;
     while (Date.now() < end) {
       result += Math.sqrt(Math.random());
     }
@@ -21,7 +21,7 @@ function heavyCalc1() {
 function heavyCalc2() {
   return new Promise((resolve) => {
     let result = 0;
-    const end = Date.now() + 10_000; // блокує поток ~10 сек
+    const end = Date.now() + 10_000; 
     while (Date.now() < end) {
       result += Math.sqrt(Math.random());
     }
@@ -39,28 +39,13 @@ const [r1, r2] = await Promise.all([heavyCalc1(), heavyCalc2()]);
 3. Що таке **event loop** і як він пов'язаний з цією поведінкою?
 4. Як можна було б зробити **справжнє паралельне** виконання цих обчислень у браузері?
 
-<details>
-<summary>Правильна відповідь (розгорнути)</summary>
-
-**~20 секунд.** JavaScript — однопоточна мова. `Promise` не робить код паралельним. Executor-функція, передана в `new Promise(...)`, виконується **синхронно** прямо при виклику конструктора. Тому:
-
-- `heavyCalc1()` блокує event loop на 10 сек, потім resolve
-- `heavyCalc2()` блокує event loop ще на 10 сек, потім resolve
-- `Promise.all` лише чекає обидва проміси — він **не запускає** їх паралельно
-
-`Promise.all` дає виграш лише для **асинхронних** операцій (I/O, `fetch`, таймери), де реальне очікування відбувається поза потоком JS.
-
-Для справжнього паралелізму CPU-задач у браузері — **Web Workers**.
-
-</details>
-
 ---
 
 ## Питання 2 — Підхід до завдання
 
 > Прикріплена картинка з макетом / ТЗ:
 
-![Макет завдання](./form.png)
+<img src="./form.png" width="70%" alt="Макет завдання" />
 
 ---
 
