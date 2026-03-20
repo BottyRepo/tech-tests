@@ -60,8 +60,7 @@ const [r1, r2] = await Promise.all([heavyCalc1(), heavyCalc2()]);
 
 > Прикріплена картинка з макетом / ТЗ:
 
-<!-- INSERT IMAGE HERE -->
-![Макет завдання](./task-image.png)
+![Макет завдання](./form.png)
 
 ---
 
@@ -110,33 +109,3 @@ const [r1, r2] = await Promise.all([heavyCalc1(), heavyCalc2()]);
 ## Питання 5 — CSS Centering
 
 Назви **4 способи** відцентрувати `div` по горизонталі та вертикалі.
-
-```css
-/* Спосіб 1 — Flexbox */
-.parent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Спосіб 2 — CSS Grid */
-.parent {
-  display: grid;
-  place-items: center;
-}
-
-/* Спосіб 3 — Position + Transform */
-.child {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Спосіб 4 — Margin auto (горизонтально + фіксована висота) */
-.child {
-  width: fit-content;
-  margin: 0 auto;
-  /* для вертикалі: margin-block: auto; або в flex/grid контейнері */
-}
-```
